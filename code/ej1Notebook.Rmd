@@ -1,0 +1,237 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Se genera la poblacion inicial y se extraen 4 muestras sin remplazo: \* Una muestra de tamanno 200. \* Una muestra de tamanno 60. \* Una muestra de tamanno 30. \* Una muestra de tamanno 20. Se generan otras cuatro muestras con el mismo tamanno. Esta vez con remplazo.
+
+```{r}
+population <- rnorm(500)
+
+large_sample <- sample(population, 200, replace = FALSE)
+large_sample_replace <- sample(population, 200, replace = TRUE)
+
+big_sample <- sample(population, 60, replace = FALSE)
+big_sample_replace <- sample(population, 60, replace = TRUE)
+
+medium_sample <- sample(population, 30, replace = FALSE)
+medium_sample_replace <- sample(population, 30, replace = TRUE)
+
+small_sample <- sample(population, 20, replace = FALSE)
+small_sample_replace <- sample(population, 20, replace = TRUE)
+```
+
+Luego se calculan los Estadisticos Descriptivos de las muestras y la poblacion.
+
+```{r}
+large_sample_mean <- mean(large_sample)
+large_sample_replace_mean <- mean(large_sample_replace)
+
+big_sample_mean <- mean(big_sample)
+big_sample_replace_mean <- mean(big_sample_replace)
+
+medium_sample_mean <- mean(medium_sample)
+medium_sample_replace_mean <- mean(medium_sample_replace)
+
+small_sample_mean <- mean(small_sample)
+small_sample_replace_mean <- mean(small_sample_replace)
+
+population_mean <- mean(population)
+
+
+large_sample_mode <- mode(large_sample)
+large_sample_replace_mode <- mode(large_sample_replace)
+
+big_sample_mode <- mode(big_sample)
+big_sample_replace_mode <- mode(big_sample_replace)
+
+medium_sample_mode <- mode(medium_sample)
+medium_sample_replace_mode <- mode(medium_sample_replace)
+
+small_sample_mode <- mode(small_sample)
+small_sample_replace_mode <- mode(small_sample_replace)
+
+population_mode <- mode(population)
+
+
+large_sample_median <- median(large_sample)
+large_sample_replace_median <- median(large_sample_replace)
+
+big_sample_median <- median(big_sample)
+big_sample_replace_median <- median(big_sample_replace)
+
+medium_sample_median <- median(medium_sample)
+medium_sample_replace_median <- median(medium_sample_replace)
+
+small_sample_median <- median(small_sample)
+small_sample_replace_median <- median(small_sample_replace)
+
+population_median <- median(population)
+
+
+large_sample_var <- var(large_sample)
+large_sample_replace_var <- var(large_sample_replace)
+
+big_sample_var <- var(big_sample)
+big_sample_replace_var <- var(big_sample_replace)
+
+medium_sample_var <- var(medium_sample)
+medium_sample_replace_var <- var(medium_sample_replace)
+
+small_sample_var <- var(small_sample)
+small_sample_replace_var <- var(small_sample_replace)
+
+population_var <- var(population)
+
+large_sample_sd <- sd(large_sample)
+large_sample_replace_sd <- sd(large_sample_replace)
+
+big_sample_sd <- sd(big_sample)
+big_sample_replace_sd <- sd(big_sample_replace)
+
+medium_sample_sd <- sd(medium_sample)
+medium_sample_replace_sd <- sd(medium_sample_replace)
+
+small_sample_sd <- sd(small_sample)
+small_sample_replace_sd <- sd(small_sample_replace)
+
+population_sd <- sd(population)
+```
+
+Aqui se deberian analizar las diferencias entre la media y la varianza de las muestras contra la poblacion. Sacar un error, que error se utilizaria? Error cuadratico medio? Otro error, la simple diferencia?
+
+```{r}
+#Se  hace un analisis y se ven las diferencias
+```
+
+Luego graficamos estos resultados que muestran algo imprecedente(Suena musica de suspenso). Grafico de puntos de varianza contra promedio?
+
+```{r}
+#pam pam
+```
+
+Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significacion del 5%. Primero se plantea las funciones a utilizar para calcular los intervalos de confianza.
+
+```{r}
+
+print_mean  <- function(interval, population_mean, alpha) {
+    res  <- paste(
+                  "With confidence level", alpha,
+                  "population mean is in between (",
+                  format(interval[1], digits = 3), ",",
+                  format(interval[2], digits = 3), ")",
+                  "which is",
+                  interval[1] < population_mean | interval[2] > population_mean
+    )
+    print(res)
+}
+
+print_var  <-  function(interval, population_var, alpha) {
+    res  <- paste(
+                  "With confidence level", alpha,
+                  "population variance is in between (",
+                  format(interval[1], digits = 3), ",",
+                  format(interval[2], digits = 3), ")",
+                  "which is",
+                  interval[1] < population_var | interval[2] > population_var
+    )
+    print(res)
+
+}
+
+get_mean_conf_interval  <-  function(data, population_mean, alpha = 0.05) {
+    x <- mean(data)
+    s <- sd(data)
+    error <- qnorm(1 - alpha / 2) * s / sqrt(length(data))
+
+    interval <- c(x - error, x  + error)
+    print_mean(interval, population_mean, alpha)
+}
+
+get_variance_conf_interval  <- function(data, population_var, alpha = 0.05) {
+    s2 <- var(data)
+    n <- length(data)
+    error_left  <- qchisq(1 - alpha / 2, df = n - 1)
+    error_right  <- qchisq(alpha / 2, df = n - 1)
+    num  <-  (n - 1) * s2
+
+    interval <- c(num / error_left, num / error_right)
+    print_var(interval, population_var, alpha)
+}
+
+get_small_mean_conf_interval  <-
+    function(data, population_mean, alpha = 0.05) {
+        x <- mean(data)
+        s <- sd(data)
+        n <- length(data)
+        error <- qt(1 - alpha / 2, n - 1) * s / sqrt(n)
+
+        interval <- c(x - error, x  + error)
+        print_mean(interval, population_mean, alpha)
+    }
+```
+
+alpha \<- 0.0 \#\#\#\# Medias de las muestras
+
+```{r}
+alpha  <- 0.05
+print("Large sample (n = 200) without replacement")
+get_mean_conf_interval(large_sample, population_mean, alpha)
+print("Large sample (n = 200) with replacement")
+get_mean_conf_interval(large_sample_replace, population_mean, alpha)
+
+print("")
+print("Big sample (n = 60) without replacement")
+get_mean_conf_interval(big_sample, population_mean, alpha)
+print("Big sample (n = 60) with replacement")
+get_mean_conf_interval(big_sample_replace, population_mean, alpha)
+
+print("")
+print("Medium sample (n = 30) without replacement")
+get_small_mean_conf_interval(medium_sample, population_mean, alpha)
+print("Medium sample (n = 30) with replacement")
+get_small_mean_conf_interval(medium_sample_replace, population_mean, alpha)
+
+print("")
+print("Small sample (n = 20) without replacement")
+get_small_mean_conf_interval(small_sample, population_mean, alpha)
+print("Small sample (n = 20) with replacement")
+get_small_mean_conf_interval(small_sample_replace, population_mean, alpha)
+```
+
+#### Varianza de las muestras
+
+```{r}
+alpha  <- 0.05
+
+print("Large sample (n = 200) without replacement")
+get_variance_conf_interval(large_sample, population_mean, alpha)
+print("Large sample (n = 200) with replacement")
+get_variance_conf_interval(large_sample_replace, population_mean, alpha)
+
+print("")
+print("Big sample (n = 60) without replacement")
+get_variance_conf_interval(big_sample, population_mean, alpha)
+print("Big sample (n = 60) with replacement")
+get_variance_conf_interval(big_sample_replace, population_mean, alpha)
+
+print("")
+print("Medium sample (n = 30) without replacement")
+get_variance_conf_interval(medium_sample, population_mean, alpha)
+print("Medium sample (n = 30) with replacement")
+get_variance_conf_interval(medium_sample_replace, population_mean, alpha)
+
+print("")
+print("Small sample (n = 20) without replacement")
+get_variance_conf_interval(small_sample, population_mean, alpha)
+print("Small sample (n = 20) with replacement")
+get_variance_conf_interval(small_sample_replace, population_mean, alpha)
+```
+
+Comparamos los resultados entre las muestras de mismo tamanno.
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
