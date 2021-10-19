@@ -98,16 +98,16 @@ small_sample_replace_sd <- sd(small_sample_replace)
 population_sd <- sd(population)
 ```
 
-Aqui se deberian analizar las diferencias entre la media y la varianza de las muestras contra la poblacion. Sacar un error, que error se utilizaria? Error cuadratico medio? Otro error, la simple diferencia?
+Analicemos las diferencias entre los resultados obtenidos en las muestras y la poblacion.
 
 ```{r}
-#Se  hace un analisis y se ven las diferencias
+# Ver diferencia entre las medidas de dispersion utilizadas
 ```
 
-Luego graficamos estos resultados que muestran algo imprecedente(Suena musica de suspenso). Grafico de puntos de varianza contra promedio?
+Mostrar graficamente:
 
 ```{r}
-#pam pam
+# Histograma, puntos?
 ```
 
 Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significacion del 5%. Primero se plantea las funciones a utilizar para calcular los intervalos de confianza.
@@ -171,7 +171,7 @@ get_small_mean_conf_interval  <-
     }
 ```
 
-alpha \<- 0.0 \#\#\#\# Medias de las muestras
+\#\#\#\# Medias de las muestras
 
 ```{r}
 alpha  <- 0.05
@@ -229,9 +229,3 @@ get_variance_conf_interval(small_sample_replace, population_mean, alpha)
 ```
 
 Comparamos los resultados entre las muestras de mismo tamanno.
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
