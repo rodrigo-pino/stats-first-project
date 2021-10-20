@@ -3,7 +3,8 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-Se genera la poblacion inicial y se extraen 4 muestras sin remplazo: \* Una muestra de tamanno 200. \* Una muestra de tamanno 60. \* Una muestra de tamanno 30. \* Una muestra de tamanno 20. Se generan otras cuatro muestras con el mismo tamanno. Esta vez con remplazo.
+Se genera la poblacion inicial y se extraen 4 muestras sin remplazo. Cada una de tamanno 200, 60, 30 y 20. Luego se extraen otras 4 de igual tamanno a las anteriores, pero esta vez con remplazo.
+
 
 ```{r}
 population <- rnorm(500)
@@ -21,7 +22,7 @@ small_sample <- sample(population, 20, replace = FALSE)
 small_sample_replace <- sample(population, 20, replace = TRUE)
 ```
 
-Luego se calculan los Estadisticos Descriptivos de las muestras y la poblacion.
+Se calculan los estadisticos descriptivos de las muestras y la poblacion para su posterior analisis.
 
 ```{r}
 large_sample_mean <- mean(large_sample)
@@ -98,11 +99,12 @@ small_sample_replace_sd <- sd(small_sample_replace)
 population_sd <- sd(population)
 ```
 
-Analicemos las diferencias entre los resultados obtenidos en las muestras y la poblacion.
+Los estadisticos descriptivos de las 8 muestras estuvieran cerca de los de la poblacion. La diferencia mayor entre las muestras y la poblacion durante nuestras pruebas no supero las 0,2 decimas.
 
-Se observa que las muestras sin remplazo de tamanno 200 y 60 tienen menor diferencia con respecto a la media y la varianza de la poblacion con respecto a las muestras de mismo tamanno y con remplazo. En este caso los valores con remplazo estuvieron mas cercano a la mediana.
+Debido a su caracter probabilistico, el metodo de extraccion de las muestras afecta directamente al resultado de las medidas de tendencia central y dispersion. Como consecuancia las muestras de mayor tamanno tienen mayor probabilildad de que sus estimadores puntuales esten mas cercanos al valor real pues se reduce la probabilidad de tener en la muestra casos extremos que no son representativos de la poblacion, y cuando estos estan en la muestra su impacto es suavizado por la cantidad de caso no extremos. Por esta misma razon las muestras de menor tamanno suelen dar resultados mas alejados de la realidad.
 
-Para las muestras tamanno 30 y 20 la diferencia de los estadisticos discriptivos contra la poblacion es bastate similiar a la de las muestras con remplazo. Para el caso de la muestra de tamanno 20, se obtiene mejores resultado la que se realizo con remplazo.
+Las muestras que se extrajeron con remplazo durante nuestros experimentos sus estimadores puntuales son mas exactos en las muestras de menor tamanno, no obstante esto no ocurrio consistentemente.
+
 ```{r}
 # Ver diferencia entre las medidas de dispersion utilizadas
 get_diff <- function(word, sample_val, population_val) {
@@ -180,7 +182,15 @@ get_diff("standard deviation", small_sample_replace_sd, population_sd)
 
 ```
 
-Mostrar graficamente:
+Utilizamos un grafico de cajas y bigotes en paralelo sobre las ocho muestras y la poblacion para tener una imagen de como se comportan los datos de manera general.
+
+l: large (n = 200)
+b: big (n = 60)
+m: medium (n = 30)
+s: small (n = 20)
+p: population
+
+Es posbile apreciar que las cajas estan por lo general alineadas y bien formadas, lo que muestra que se mantiene la distibucion normal entre los datos de la muestras y los valores se encuentran bien centrados. La mayor diferencia entre las muestras se aprecia prinicipalmente en el _lowest hinge_ y el _upper hinge_.
 
 ```{r}
 values <- c(large_sample, large_sample_replace,
@@ -226,14 +236,19 @@ boxplot(values~sample_type,
 )
 
 ```
+aaa
 
-Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significacion del 5%. Primero se plantea las funciones a utilizar para calcular los intervalos de confianza.
+```{r}
+#aaa
+```
+
+Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significacion del 5%. Primero se definen las funciones a utilizar para calcular los intervalos de confianza para la varianza y para la media con n <= 30 y n > 30. 
 
 ```{r}
 
 print_mean  <- function(interval, population_mean, alpha) {
     res  <- paste(
-                  "With confidence level", alpha,
+                  "With confidence level", 1 - alpha,
                   "population mean is in between (",
                   format(interval[1], digits = 3), ",",
                   format(interval[2], digits = 3), ")",
@@ -245,7 +260,7 @@ print_mean  <- function(interval, population_mean, alpha) {
 
 print_var  <-  function(interval, population_var, alpha) {
     res  <- paste(
-                  "With confidence level", alpha,
+                  "With confidence level", 1 - alpha,
                   "population variance is in between (",
                   format(interval[1], digits = 3), ",",
                   format(interval[2], digits = 3), ")",
@@ -288,7 +303,9 @@ get_small_mean_conf_interval  <-
     }
 ```
 
-\#\#\#\# Medias de las muestras
+#### Medias de las muestras
+
+En la muestra mas grande se observa el el intervalo mas pequenno. A medida que el tamanno de la muestra disminuye se hace mas dificil predecir el valor real de la media y el intervalo se hace mas grande. Que las muestras sean con remplazo o no, no afecta el tamanno del intervalo.
 
 ```{r}
 alpha  <- 0.05
@@ -315,8 +332,8 @@ get_small_mean_conf_interval(small_sample, population_mean, alpha)
 print("Small sample (n = 20) with replacement")
 get_small_mean_conf_interval(small_sample_replace, population_mean, alpha)
 ```
-
 #### Varianza de las muestras
+Al igual que en la prueba anterior, las muestras mas grandes presentan el intervalo mas pequenno, no obstante los datos extraidos con remplazo presenta un nivel de varianza mucho menor a sus contrapartes de igual tamanno.
 
 ```{r}
 alpha  <- 0.05
@@ -345,4 +362,3 @@ print("Small sample (n = 20) with replacement")
 get_variance_conf_interval(small_sample_replace, population_mean, alpha)
 ```
 
-Comparamos los resultados entre las muestras de mismo tamanno.
