@@ -46,15 +46,16 @@ load_vector <- function(filex) {
     data_frame <- read.csv(filex)
     data_frame$x
 }
-population <- load_vector("../data/ex_1/population.csv")
-large_sample <- load_vector("../data/ex_1/large_sample.csv")
-large_sample_replace <- load_vector("../data/ex_1/large_sample_replace.csv")
-big_sample <- load_vector("../data/ex_1/big_sample.csv")
-big_sample_replace <- load_vector("../data/ex_1/big_sample_replace.csv")
-medium_sample <- load_vector("../data/ex_1/medium_sample.csv")
-medium_sample_replace <- load_vector("../data/ex_1/medium_sample_replace.csv")
-small_sample <- load_vector("../data/ex_1/small_sample.csv")
-small_sample_replace <- load_vector("../data/ex_1/small_sample_replace.csv")
+
+population <- load_vector("data/ex_1/population.csv")
+large_sample <- load_vector("data/ex_1/large_sample.csv")
+large_sample_replace <- load_vector("data/ex_1/large_sample_replace.csv")
+big_sample <- load_vector("data/ex_1/big_sample.csv")
+big_sample_replace <- load_vector("data/ex_1/big_sample_replace.csv")
+medium_sample <- load_vector("data/ex_1/medium_sample.csv")
+medium_sample_replace <- load_vector("data/ex_1/medium_sample_replace.csv")
+small_sample <- load_vector("data/ex_1/small_sample.csv")
+small_sample_replace <- load_vector("data/ex_1/small_sample_replace.csv")
 
 # -----------------------------------------------------
 # calculating Dispersion and Central Tendency measures
