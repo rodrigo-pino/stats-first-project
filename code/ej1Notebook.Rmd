@@ -3,7 +3,7 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-Se genera la poblacion inicial y se extraen 4 muestras sin remplazo. Cada una de tamanno 200, 60, 30 y 20. Luego se extraen otras 4 de igual tamanno a las anteriores, pero esta vez con remplazo.
+Se genera una poblacion inicial con distribución normal con media 0 y varianza 1. Se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo.
 
 
 ```{r}
@@ -22,7 +22,7 @@ small_sample <- sample(population, 20, replace = FALSE)
 small_sample_replace <- sample(population, 20, replace = TRUE)
 ```
 
-Se calculan los estadisticos descriptivos de las muestras y la poblacion para su posterior analisis.
+Se calculan los estadisticos descriptivos de las muestras y la población para su posterior análisis.
 
 ```{r}
 large_sample_mean <- mean(large_sample)
@@ -99,18 +99,18 @@ small_sample_replace_sd <- sd(small_sample_replace)
 population_sd <- sd(population)
 ```
 
-Los estadisticos descriptivos de las 8 muestras estuvieran cerca de los de la poblacion. La diferencia mayor entre las muestras y la poblacion durante nuestras pruebas no supero las 0,2 decimas.
+Los estadísticos descriptivos de las muestras estan siempre cerca de la poblacion, durante nuestras pruebas el margen de error nunca superó 0,2.
 
-Debido a su caracter probabilistico, el metodo de extraccion de las muestras afecta directamente al resultado de las medidas de tendencia central y dispersion. Como consecuancia las muestras de mayor tamanno tienen mayor probabilildad de que sus estimadores puntuales esten mas cercanos al valor real pues se reduce la probabilidad de tener en la muestra casos extremos que no son representativos de la poblacion, y cuando estos estan en la muestra su impacto es suavizado por la cantidad de caso no extremos. Por esta misma razon las muestras de menor tamanno suelen dar resultados mas alejados de la realidad.
+La exactitud de los estimadores puntuales fluctua en cada prueba realizada. Las muestras de mayor tamaño presentan generalmente los estimadores más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real. Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos, mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información que se extrae de la muestra. Esta razón refleja la dependencia directa que existe entre los resultados de la muestra y la calidad de sus datos. Podemos deducir entonces que mientras más pequeña sea la muestra garantizar que todos, o casi todos los datos extraidos sean representativos de la población en cuestión es aun más importante.
 
-Las muestras que se extrajeron con remplazo durante nuestros experimentos sus estimadores puntuales son mas exactos en las muestras de menor tamanno, no obstante esto no ocurrio consistentemente.
+Los estimadores de las muestras extraídas con remplazo durante nuestras pruebas obtienen en ocasiones mejores resultados que sus contrapartes de menor tamaño respectivamente, no obstante esto no ocurre consistentemente.
 
 ```{r}
 # Ver diferencia entre las medidas de dispersion utilizadas
 get_diff <- function(word, sample_val, population_val) {
     dif <- abs(population_val - sample_val)
-    output <- paste("The", 
-                    word, 
+    output <- paste("The",
+                    word,
                     "differs from the population in",
                     format(dif, digits = 3)
     )
@@ -182,15 +182,15 @@ get_diff("standard deviation", small_sample_replace_sd, population_sd)
 
 ```
 
-Utilizamos un grafico de cajas y bigotes en paralelo sobre las ocho muestras y la poblacion para tener una imagen de como se comportan los datos de manera general.
-
+Utilizamos un gráfico de cajas y bigotes en paralelo sobre las ocho muestras y la población para obtener una representación visual del comportamiento de los datos. Cada gráfico de cajaas esta representada por una letra donde cada una indica:
 l: large (n = 200)
 b: big (n = 60)
 m: medium (n = 30)
 s: small (n = 20)
 p: population
+Si tienen una "r" significa que es una muestra con remplazo.
 
-Es posbile apreciar que las cajas estan por lo general alineadas y bien formadas, lo que muestra que se mantiene la distibucion normal entre los datos de la muestras y los valores se encuentran bien centrados. La mayor diferencia entre las muestras se aprecia prinicipalmente en el _lowest hinge_ y el _upper hinge_.
+Es posbile apreciar que las cajas estan por lo general alineadas y bien formadas, lo que indica que se mantiene la distibucion normal en los datos muestrales y los datos son en su mayoría buenos representativos de la población de la que fueron extraídos. La mayor diferencia entre las muestras se aprecia prinicipalmente en el _lowest hinge_ y el _upper hinge_.
 
 ```{r}
 values <- c(large_sample, large_sample_replace,
@@ -227,22 +227,68 @@ for (i in seq_len(length(small_sample_replace))) {
     sample_type  <- append(sample_type, "sr")
 }
 
-df <- data.frame(values, sample_type)
-
 boxplot(values~sample_type,
-        data = df,
+        data = data.frame(values, sample_type),
         xlab = "Sample Types",
         ylab = "Values"
 )
 
 ```
-aaa
 
+Mostremos las diferencias entre las varianzas de las muestras y población.
 ```{r}
-#aaa
+barplot(c(large_sample_var,
+          large_sample_replace_var,
+          big_sample_var,
+          big_sample_replace_var,
+          medium_sample_var,
+          medium_sample_replace_var,
+          small_sample_var,
+          small_sample_replace_var,
+          population_var),
+        names.arg = c("l",
+                      "lr",
+                      "b",
+                      "br",
+                      "m",
+                      "mr",
+                      "s",
+                      "sr",
+                      "p"
+        ),
+        xlab = "Samples",
+        ylab = "Variance"
+)
+
+barplot(c(large_sample_mean,
+          large_sample_replace_mean,
+          big_sample_mean,
+          big_sample_replace_mean,
+          medium_sample_mean,
+          medium_sample_replace_mean,
+          small_sample_mean,
+          small_sample_replace_mean,
+          population_mean),
+        names.arg = c("l",
+                      "lr",
+                      "b",
+                      "br",
+                      "m",
+                      "mr",
+                      "s",
+                      "sr",
+                      "p"
+        ),
+        xlab = "Samples",
+        ylab = "Mean"
+)
 ```
 
-Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significacion del 5%. Primero se definen las funciones a utilizar para calcular los intervalos de confianza para la varianza y para la media con n <= 30 y n > 30. 
+Mostremos las diferencias entre las medias de las muestras y la población.
+```{r}
+```
+
+Se calculan los intervalos de confianza para la media y la varianza de todas las muestras. Se utiliza un nivel de significación del 5%. En esta sección son definidas las funciones a utilizar para calcular intervalos de confianza para la varianza y para la media en los casos de  n <= 30 y n > 30. 
 
 ```{r}
 
@@ -304,8 +350,7 @@ get_small_mean_conf_interval  <-
 ```
 
 #### Medias de las muestras
-
-En la muestra mas grande se observa el el intervalo mas pequenno. A medida que el tamanno de la muestra disminuye se hace mas dificil predecir el valor real de la media y el intervalo se hace mas grande. Que las muestras sean con remplazo o no, no afecta el tamanno del intervalo.
+El margen de error en las muestras de mayor tamaño es más pequeño que en las muestras más grande. Que la muestra se haya extraído con remplazo o no, no afecta de manera notable la media.
 
 ```{r}
 alpha  <- 0.05
