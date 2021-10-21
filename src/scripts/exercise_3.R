@@ -15,7 +15,7 @@ mean_test<- function(sample1, sample2, alpha, alt){
 }
 
 
-data <- read.csv("../raw_data/adult.data.csv")
+data <- read.csv("raw_data/adult.data.csv")
 low <- data[data$income ==" <=50K",] # Parte de la poblacion con ingresos <=50K
 high <- data[data$income ==" >50K",] # Parte de la poblacion con ingresos >50K
 
