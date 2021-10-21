@@ -333,3 +333,7 @@ docs/
 
 # translation temp files
 po/*~
+
+# Rmarkdown Generated
+*.nb.html
+
