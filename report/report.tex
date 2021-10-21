@@ -23,7 +23,7 @@
 Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 \date{}
 %\renewcommand{\baselinestretch}{1.4}
-
+\renewcommand{\labelenumi}{\alph{enumi}.}
 
 \newtheorem{eje}{Ejercicio}
 \newcommand{\sen}{\mbox{sen \hspace{0.001cm}}}
@@ -41,10 +41,21 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 
 \section*{Ejercicios}
 \begin{eje}
+    Genere una Población normal de tamaño 500, seleccione 8 muestras de tamaños varios(Muy mayor que 30, mayor que 30, 30, 20), 4 muestras con remplazo y 4 sin remplazo.
+    \begin{enumerate}
+        \item Calcule para cada una de las muestras los Estadísticos Descriptivos, de la Conferencia 1.
+        \item Calcúlelos en la población inicial. Analice las diferencias.
+        \item Grafique los resultados.
+        \item Para cada muestra calcule los intervalos de confianza para la media y la varianza.
+        \item Analice las diferencias en los resultados de las muestras de tamaños similares.
+    \end{enumerate}
 	Propuesta de distintos ejercicios de la clase, para desarrollar las habilidades a crear durante la clase.
 \end{eje}
 \begin{eje}
-	Cada uno de los elementos a tratar es optativo, as\'i como la estructura de la composici\'on de la clase. El presente documento constituye solamente una gu\'ia para su desarrollo
+    Aqui va orden del ejercicio 2
+\end{eje}
+\begin{eje}
+    Aqui va orden del ejercicio 3
 \end{eje}
 
 
@@ -79,11 +90,15 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 
 
 \section*{Ejercicio 1}
-
- (Zmin')
+(c\'odigo en doucmento adjunto)
+ %(Zmin')
  
-Compartir las soluciones de los ejercicios propuestos as\'i como observaciones interesantes que puedan servir de gu\'ia para el desarrollo de la clase.
+Se genera una poblacion inicial con 500 valores y una distribución normal con media 0 y varianza 1. Luego de esta se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo.
 
+La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuacion era mayor o menor dependiendo del tama\~no de las muestras. 
+Las muestras de mayor tamaño presentan sus estimadores son generalmente más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real. Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos, mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información extra\'ida. Esta razón refleja la dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, e incluso m\'as cuando la muestra es pequ\~na.
+
+La extracci\'on de muestras con remplazo en lo que se refiere a la media no tiene muchos cambios.
 
 
 \section*{Ejercicio 2} 
