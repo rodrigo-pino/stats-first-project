@@ -186,10 +186,10 @@ boxplot(values~sample_type,
         ylab = "Values"
 )
 
-
 # -----------------------------------------------------
 # bar plot mean
 # -----------------------------------------------------
+names = c("l", "lr", "b", "br", "m", "mr", "s", "sr", "p")
 barplot(c(large_sample_mean,
           large_sample_replace_mean,
           big_sample_mean,
@@ -199,16 +199,7 @@ barplot(c(large_sample_mean,
           small_sample_mean,
           small_sample_replace_mean,
           population_mean),
-        names.arg = c("l",
-                      "lr",
-                      "b",
-                      "br",
-                      "m",
-                      "mr",
-                      "s",
-                      "sr",
-                      "p"
-        ),
+        names.arg = names,
         xlab = "Samples",
         ylab = "Mean"
 )
@@ -224,22 +215,14 @@ barplot(c(large_sample_var,
           small_sample_var,
           small_sample_replace_var,
           population_var),
-        names.arg = c("l",
-                      "lr",
-                      "b",
-                      "br",
-                      "m",
-                      "mr",
-                      "s",
-                      "sr",
-                      "p"
-        ),
+        names.arg = names,
         xlab = "Samples",
         ylab = "Variance"
 )
 # -----------------------------------------------------
 # define confidence intervals functions
 # -----------------------------------------------------
+# Verbose output of the mean analysis
 print_mean  <- function(interval, population_mean, alpha) {
     res  <- paste(
                   "With confidence level", 1 - alpha,
@@ -252,6 +235,7 @@ print_mean  <- function(interval, population_mean, alpha) {
     print(res)
 }
 
+# Verbose output of the variance analysis
 print_var  <-  function(interval, population_var, alpha) {
     res  <- paste(
                   "With confidence level", 1 - alpha,
@@ -295,9 +279,6 @@ get_small_mean_conf_interval  <-
         interval <- c(x - error, x  + error)
         print_mean(interval, population_mean, alpha)
     }
-# -----------------------------------------------------
-# calculate confidence intervals
-# -----------------------------------------------------
 
 # -----------------------------------------------------
 # show samples mean confidence interval
