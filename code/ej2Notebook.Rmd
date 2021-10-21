@@ -1,0 +1,55 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+data <- read.csv(file = "../data/adult.data.csv")
+df <- data.frame(data)
+
+categorical_to_numerical  <- function(data, map) {
+ n  <- c()
+ for (val in data) {
+  if (val != " ?") {
+    n <-  append(n, map[val])
+  }
+ }
+ return(n)
+}
+
+workclass  <- seq(1, 8)
+names(workclass)  <- c(" Private" , " Self-emp-not-inc" , " Self-emp-inc" , " Federal-gov" , " Local-gov" , " State-gov" , " Without-pay" , " Never-worked" )  # nolint
+numeric_workclass <- categorical_to_numerical(df$workclass, workclass)
+mean(numeric_workclass)
+
+education  <- seq(1, 16)
+names(education)  <- c(" Bachelors" , " Some-college" , " 11th" , " HS-grad" , " Prof-school" , " Assoc-acdm" , " Assoc-voc" , " 9th" , " 7th-8th" , " 12th" , " Masters" , " 1st-4th" , " 10th" , " Doctorate" , " 5th-6th" , " Preschool" ) # nolint
+
+marital_status  <- seq(1, 7)
+names(marital_status) <- c(" Married-civ-spouse" , " Divorced" , " Never-married" , " Separated" , " Widowed" , " Married-spouse-absent" , " Married-AF-spouse" ) # nolint
+
+occupation  <- seq(1, 14)
+names(occupation) <- c(" Tech-support" , " Craft-repair" , " Other-service" , " Sales" , " Exec-managerial" , " Prof-specialty" , " Handlers-cleaners" , " Machine-op-inspct" , " Adm-clerical" , " Farming-fishing" , " Transport-moving" , " Priv-house-serv" , " Protective-serv" , " Armed-Force" ) # nolint
+
+relationship  <- seq(1, 6)
+names(relationship)  <- c(" Wife" , " Own-child" , " Husband" , " Not-in-family" , " Other-relative" , " Unmarried" ) # nolint
+
+race  <- seq(1, 5)
+names(race)  <- c(" White" , " Asian-Pac-Islander" , " Amer-Indian-Eskimo" , " Other" , " Black" ) # nolint
+
+sex  <-  seq(1, 2)
+names(sex) <- c(" Female", " Male")
+
+native_country  <- seq(1, 41)
+names(native_country)  <- c(" United-States" , " Cambodia" , " England" , " Puerto-Rico" , " Canada" , " Germany" , " Outlying-US(Guam-USVI-etc)" , " India" , " Japan" , " Greece" , " South" , " China" , " Cuba" , " Iran" , " Honduras" , " Philippines" , " Italy" , " Poland" , " Jamaica" , " Vietnam" , " Mexico" , " Portugal" , " Ireland" , " France" , " Dominican-Republic" , " Laos" , " Ecuador" , " Taiwan" , " Haiti" , " Columbia" , " Hungary" , " Guatemala" , " Nicaragua" , " Scotland" , " Thailand" , " Yugoslavia" , " El-Salvador" , " Trinadad&Tobago" , " Peru" , " Hong" , " Holand-Netherlands" )  # nolint
+
+income  <- seq(1, 2)
+names(income)  <- c(" >50K", " <=50K")
+
+
+age_mean  <- mean(df$age)
+age_median  <- median(df$age)
+age_var  <- var(df$age)
+age_sd <-  sd(df$age)
+
+```
