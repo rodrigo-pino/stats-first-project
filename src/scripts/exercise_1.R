@@ -1,6 +1,7 @@
 # -----------------------------------------------------
 # generating new normal population
 # -----------------------------------------------------
+# Use this to test with new population and samples
 population <- rnorm(500)
 
 large_sample <- sample(population, 200, replace = FALSE)
@@ -14,6 +15,46 @@ medium_sample_replace <- sample(population, 30, replace = TRUE)
 
 small_sample <- sample(population, 20, replace = FALSE)
 small_sample_replace <- sample(population, 20, replace = TRUE)
+
+# -----------------------------------------------------
+# saving normal population
+# -----------------------------------------------------
+# Use this to save the current population and samples
+write.csv(population, file = "../data/ex_1/population.csv", row.names = F)
+write.csv(large_sample, file = "../data/ex_1/large_sample.csv", row.names = F)
+write.csv(large_sample_replace,
+          file = "../data/ex_1/large_sample_replace.csv",
+          row.names = F)
+write.csv(big_sample, file = "../data/ex_1/big_sample.csv", row.names = F)
+write.csv(big_sample_replace,
+          file = "../data/ex_1/big_sample_replace.csv",
+          row.names = F)
+write.csv(medium_sample, file = "../data/ex_1/medium_sample.csv", row.names = F)
+write.csv(medium_sample_replace,
+          file = "../data/ex_1/medium_sample_replace.csv",
+          row.names = F)
+write.csv(small_sample, file = "../data/ex_1/small_sample.csv", row.names = F)
+write.csv(small_sample_replace,
+          file = "../data/ex_1/small_sample_replace.csv",
+          row.names = F)
+
+# -----------------------------------------------------
+# loading normal population
+# -----------------------------------------------------
+# Use this to load a previous saved population
+load_vector <- function(filex) {
+    data_frame <- read.csv(filex)
+    data_frame$x
+}
+population <- load_vector("../data/ex_1/population.csv")
+large_sample <- load_vector("../data/ex_1/large_sample.csv")
+large_sample_replace <- load_vector("../data/ex_1/large_sample_replace.csv")
+big_sample <- load_vector("../data/ex_1/big_sample.csv")
+big_sample_replace <- load_vector("../data/ex_1/big_sample_replace.csv")
+medium_sample <- load_vector("../data/ex_1/medium_sample.csv")
+medium_sample_replace <- load_vector("../data/ex_1/medium_sample_replace.csv")
+small_sample <- load_vector("../data/ex_1/small_sample.csv")
+small_sample_replace <- load_vector("../data/ex_1/small_sample_replace.csv")
 
 # -----------------------------------------------------
 # calculating Dispersion and Central Tendency measures
@@ -94,49 +135,42 @@ get_diff("median", large_sample_median, population_median)
 get_diff("variance", large_sample_var, population_var)
 get_diff("standard deviation", large_sample_sd, population_sd)
 
-print("")
 print("For large sample (n = 200) with replacement")
 get_diff("mean", large_sample_replace_mean, population_mean)
 get_diff("median", large_sample_replace_median, population_median)
 get_diff("variance", large_sample_replace_var, population_var)
 get_diff("standard deviation", large_sample_replace_sd, population_sd)
 
-print("")
 print("For big sample (n = 60) without replacement")
 get_diff("mean", big_sample_mean, population_mean)
 get_diff("median", big_sample_median, population_median)
 get_diff("variance", big_sample_var, population_var)
 get_diff("standard deviation", big_sample_sd, population_sd)
 
-print("")
 print("For big sample (n = 60) with replacement")
 get_diff("mean", big_sample_replace_mean, population_mean)
 get_diff("median", big_sample_replace_median, population_median)
 get_diff("variance", big_sample_replace_var, population_var)
 get_diff("standard deviation", big_sample_replace_sd, population_sd)
 
-print("")
 print("For medium sample (n = 30) without replacement")
 get_diff("mean", medium_sample_mean, population_mean)
 get_diff("median", medium_sample_median, population_median)
 get_diff("variance", medium_sample_var, population_var)
 get_diff("standard deviation", medium_sample_sd, population_sd)
 
-print("")
 print("For medium sample (n = 30) with replacement")
 get_diff("mean", medium_sample_replace_mean, population_mean)
 get_diff("median", medium_sample_replace_median, population_median)
 get_diff("variance", medium_sample_replace_var, population_var)
 get_diff("standard deviation", medium_sample_replace_sd, population_sd)
 
-print("")
 print("For small sample (n = 20) without replacement")
 get_diff("mean", small_sample_mean, population_mean)
 get_diff("median", small_sample_median, population_median)
 get_diff("variance", small_sample_var, population_var)
 get_diff("standard deviation", small_sample_sd, population_sd)
 
-print("")
 print("For small sample (n = 20) with replacement")
 get_diff("mean", small_sample_replace_mean, population_mean)
 get_diff("median", small_sample_replace_median, population_median)
@@ -289,19 +323,16 @@ get_mean_conf_interval(large_sample, population_mean, alpha)
 print("Large sample (n = 200) with replacement")
 get_mean_conf_interval(large_sample_replace, population_mean, alpha)
 
-print("")
 print("Big sample (n = 60) without replacement")
 get_mean_conf_interval(big_sample, population_mean, alpha)
 print("Big sample (n = 60) with replacement")
 get_mean_conf_interval(big_sample_replace, population_mean, alpha)
 
-print("")
 print("Medium sample (n = 30) without replacement")
 get_small_mean_conf_interval(medium_sample, population_mean, alpha)
 print("Medium sample (n = 30) with replacement")
 get_small_mean_conf_interval(medium_sample_replace, population_mean, alpha)
 
-print("")
 print("Small sample (n = 20) without replacement")
 get_small_mean_conf_interval(small_sample, population_mean, alpha)
 print("Small sample (n = 20) with replacement")
@@ -315,22 +346,17 @@ get_variance_conf_interval(large_sample, population_mean, alpha)
 print("Large sample (n = 200) with replacement")
 get_variance_conf_interval(large_sample_replace, population_mean, alpha)
 
-print("")
 print("Big sample (n = 60) without replacement")
 get_variance_conf_interval(big_sample, population_mean, alpha)
 print("Big sample (n = 60) with replacement")
 get_variance_conf_interval(big_sample_replace, population_mean, alpha)
 
-print("")
 print("Medium sample (n = 30) without replacement")
 get_variance_conf_interval(medium_sample, population_mean, alpha)
 print("Medium sample (n = 30) with replacement")
 get_variance_conf_interval(medium_sample_replace, population_mean, alpha)
 
-print("")
 print("Small sample (n = 20) without replacement")
 get_variance_conf_interval(small_sample, population_mean, alpha)
 print("Small sample (n = 20) with replacement")
 get_variance_conf_interval(small_sample_replace, population_mean, alpha)
-
-
