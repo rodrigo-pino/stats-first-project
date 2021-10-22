@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{listings}
 \usepackage[width=17.00cm]{geometry}
 \newcommand{\argt}{\theta}
 
@@ -52,10 +53,10 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 	Propuesta de distintos ejercicios de la clase, para desarrollar las habilidades a crear durante la clase.
 \end{eje}
 \begin{eje}
-    Aqui va orden del ejercicio 2
+    Aqui va orden del ejercicio 2.
 \end{eje}
 \begin{eje}
-    Aqui va orden del ejercicio 3
+    Analizando los datos del archivo "adult.data.csv"(Equipo 10), ¿Hay diferencias significativas entre el promedio de años dedicados a la educación y la cantidad de ingreso de los censados?
 \end{eje}
 
 
@@ -103,11 +104,59 @@ La extracci\'on de muestras con remplazo en lo que se refiere a la media no tien
 
 \section*{Ejercicio 2} 
 
-(20)
+\section*{Ejercicio 3}
+El problema trata sobre comparar la medias de años de educacion de los grupos de ingresos $\le50K$ y $>50K$, y ver si hay alguna diferencia significativa entre esas medias.\\
+\textit{El c\'odigo referente a este ejercicio esta en el archivo exercise\_3.R}\\
+Para lograr lo anterior se dividi\'o todos los datos del archivo csv en dos grupos: un grupo tiene ingresos $\le 50K$ y otro grupo tiene ingresos de $>50K$.\\
+Luego de realizar la divisi\'on se escogieron dos muestras sin reemplazo de tama\~no $N= 60$ cada una.\\
+Por lo que el problema se reduce a una prueba de hipótesis para la comparación de las medias de dos poblaciones Normales.\\
+Las hip\'otesis para la prueba que se escogieron fueron:
+$$
+	H_0: \mu_1 = \mu_2
+$$
+$$
+	H_1: \mu_1 \ne \mu_2
+$$
+Donde $\mu_1$ es la media de a\~nos de educaci\'on de la poblaci\'on de personas que poseen ingresos por debajo de los $50K$(inclusivo) y $\mu_2$ es la media de a\~nos de educaci\'on de la poblaci\'on de personas que poseen ingresos por encima de los $50K$.\\
+Se asumi\'o que no se conoc\'ian las varianzas de dichos grupos(o que era muy costoso calcularlas). Por lo que para hacer la prueba de hip\'otesis de la media se hace primero una prueba de hip\'otesis para la igualdad de las varianzas.
 
-Muchas veces la interacci\'on con los estudiantes puede ser de importancia. De este modo posibles m\'etodos de soluci\'on variados pueden aportar al enriquecimiento del m\'etodo.
+\begin{lstlisting}[language=R,title=Parte del codigo para la hipotesis de varianza]
+result <- var.test(sample1,
+sample2, alternative = "two.sided")
+\end{lstlisting}
 
-\textbf{Receso}(5')
+Luego de establecer la igualdad o desigualdad de varianza se procede a realizar la prueba de la media:
+
+\begin{lstlisting}[language=R,title=Parte del codigo para la hipotesis de la media]
+result <-t.test(sample1,sample2, 
+alternative = alt, var.equal = varequal)
+\end{lstlisting}
+
+Finalmente se compara el resultado del \textit{p-value} de \textit{result} con un valor $\alpha$ preestablecido y si es menor se rechaza la hip\'otesis nula.
+
+\subsection*{Anal\'iticamente}
+Se hace primero la prueba de varianza.\\
+Los datos se tomaron del script referente al ejercicio.\\
+$H_0: \sigma_1^2 = \sigma_2^2$\\
+$H_1: \sigma_1^2 \ne \sigma_2^2$\\
+$$
+F = \frac{S_1^2}{S_2^2} = \frac{6.37}{5.13}= 1,24
+$$
+	$$
+F_{1- \alpha /2}(n_1  - 1, n_2 - 1) = F_{0.975}(59,59) = 1.67
+$$
+$$
+F_{\alpha/2}(n_1 -1, n_2-1) = F_{0.025}(59,59) =0.597
+$$
+Como $F> 	F_{\alpha/2}(n_1 -1, n_2-1)$ y $F< F_{1- \alpha /2}(n_1  - 1, n_2 - 1)$ no se puede descartar $H_0$ por lo que se asume que $\sigma_1^2 = \sigma_2^2$\\
+$$
+T_{\bar{X} - \bar{Y}} =	\frac{\bar{X} - \bar{Y}}{\sqrt{ (n_1 - 1)S_1^2 + (n_2 - 1)S_2^2   }}
+\sqrt{\frac{n_1n_2(n_1+n_2-2)}{n_1 + n_2}} =3.7
+$$
+$$
+t_{1-\alpha/2}(n_1+ n_2 -2) = t_{0.975}(116) =1.98
+$$
+Como $|T_{\bar{X} - \bar{Y}}| > t_{1-\alpha/2}(n_1+ n_2 -2)$ se cumple la regi\'on cr\'itica y se descarta $H_0$ pudiendo afirmarse que se aprecian diferencias significativas.
 
 
 
