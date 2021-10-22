@@ -53,7 +53,12 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 	Propuesta de distintos ejercicios de la clase, para desarrollar las habilidades a crear durante la clase.
 \end{eje}
 \begin{eje}
-    Aqui va orden del ejercicio 2.
+	De acuerdo a su set de datos(Equipo 10):
+	\begin{enumerate}
+			\item Utilice los Estadísticos Descriptivos estudiados en la Conferencia 1. Para describir el comportamiento de tres de sus variables. Seleccione las que sean más importantes y explique porque seleccionó estas.
+			\item Grafique los resultados.
+			\item Interprete los resultados en términos del problema.
+	\end{enumerate}
 \end{eje}
 \begin{eje}
     Analizando los datos del archivo "adult.data.csv"(Equipo 10), ¿Hay diferencias significativas entre el promedio de años dedicados a la educación y la cantidad de ingreso de los censados?
@@ -77,19 +82,6 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 		\end{itemize}	
 		
 
-		
-\section*{Teorizando un poco}	
-
-(Ymin')
-
-\begin{enumerate}
-	\item \textbf{(Un Teorema interesante)} Tras la introducci\'on se podr\'an construir las secciones que se estimen convenientes para el desarrollo de la clase.  
-	\item \textbf{(Un brillante algoritmo)} Los nombre de cada una de estas secciones quedan a la elecci\'on del autor.  
-
-\end{enumerate} 
-
-
-
 \section*{Ejercicio 1}
 (c\'odigo en doucmento adjunto)
  %(Zmin')
@@ -99,10 +91,149 @@ Se genera una poblacion inicial con 500 valores y una distribución normal con me
 La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuacion era mayor o menor dependiendo del tama\~no de las muestras. 
 Las muestras de mayor tamaño presentan sus estimadores son generalmente más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real. Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos, mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información extra\'ida. Esta razón refleja la dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, e incluso m\'as cuando la muestra es pequ\~na.
 
-La extracci\'on de muestras con remplazo en lo que se refiere a la media no tiene muchos cambios.
+La extracci\'on de muestras con remplazo en lo que se refiere a la media no tiene muchos cambios. 
 
 
 \section*{Ejercicio 2} 
+
+El dataset contaba con valores faltantes. Para lidiar con este problema se realiz\'o un preprocesamiento de los datos. Se ten\'ian dos opciones: descartar dichos valores faltantes o sustituirlos por la media de los conocidos. Se opt\'o por la \'ultima opci\'on. De esta forma se obtuvo un set de datos m\'as limpio y completo que facilit\'o el trabajo en el posterior an\'alis.
+
+Como parte del an\'alisis se tomaron tres variables que se consideraron las m\'as importantes. Primeramente tomamos 'education', pues consideramos que el nivel de educación influye en gran medida en el salario de una persona. No suelen ganar lo mismo una persona con nivel universitario queuno que solamente tiene un nivel medio-superior. La otra variable escogida para analizar fue 'occupation'. El salario de una persona est\'a determinado principalmente por su profesi\'on o el tipo de trabajo que realiza. Como tercera y \'ultima  variable a analizar se tom\'o 'sex'. Se decidi\'o tomar esta variable porque se sabe que hoy en la actualidad todav\'ia existen diferencias en cuanto al salario de dos personas que se realizan el mismo trabajo en dependencia del sexo, por lo que resulto de inter\'es trabajar con esta variable.
+
+Para garantizar la veracidad de los planteamientos  anteriores se hicieron pruebas de hipótesis para cada uno de estos atributos. El resultado coincidi\'o. Tanto la educación como la ocupaci\'on y el sexo influyen significativamente en los ingresos anuales de una persona. Sin embargo, se decidi\'o analizar el resto de variables y se pudo observar un hecho interesante: la gran mayor\'ia de los atributos del dataset influyen significativamente en los ingresos anuales de una persona. Por lo que podemos decir que se hizo una muy buena seleccion de variables a la hora de recopilar información referente al problema.
+
+Con respecto a los resultados obtenidos a trav\'es del an\'alisis descriptivo de las tres variables escogidas, la tabla \ref{tab:table4} muestra los resultados para la educación, ocupaci\'on y el sexo.En las figuras de la 1 a la 6 se muestran algunos resultados gr\'aficos. En este caso, todas las variables escogidas eran categ\'oricas por lo que se codificaron en valores enteros. En las tablas \ref{tab:table1},\ref{tab:table2} y \ref{tab:table3}   se puede apreciar que valor representa cada n\'umero.
+
+\subsection*{ Interpretaci\'on de los resultados }
+
+En el caso de la ocupación la mediana fue 6( Exec-managerial ) , lo que implica que la mayor parte de de individuos (50\%) que forman parte de la muestra se dedican a esta ocupaci\'on. La moda fue tambi\'en 6, lo cual significa que es la ocupacion a la que mas se repite entre los individuos de la muestra. El valor del coeficiente de variaci\'on es de 48\% aproximadamente, por tanto los datos son muy heterog\'eneos. 
+
+En el caso de la educación la mediana fue 4 (HS-grad), lo que quere decir que alrededor del 50\% de los individuos tienen al menos nivel medio superior. La moda tambi\'en fue 4, lo cual implica que la mayor parte de las personas tenian al menos nivel medio superior en cuanto a educación. Por \'ultimo, el valor del coeficiente de variaci\'on es de 86\% aproximadamente por lo que los datos son muy heterog\'eneos. 
+
+Finalmente, para el sexo, se obtuvo  que la mediana y el la moda tomaron el mismo valor: 2. Eso implica que el valor intermedio de los datos sobreran de sexo masculino , y que  estos individuos  son los que tienen mayor presencia en el dataset.
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Valores num\'erico de las categorías de educación }
+    \label{tab:table1}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		Bachelors   &1 \\
+	    Some-college&2 \\
+		11th        &3 \\
+		HS-grad     &4 \\
+	    Prof-school &5 \\
+		Assoc-acdm  &6 \\
+		Assoc-voc   &7 \\
+		9th         &8 \\
+	    7th-8th     &9 \\
+		12th        &10 \\
+		Masters     &11 \\
+		1st-4th     &12 \\
+		10th        &13 \\
+		Doctorate   &14 \\
+		5th-6th     &15 \\
+		Preschool   &16 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categorías de ocupaci\'on }
+    \label{tab:table2}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		 Tech-support      &1 \\
+		 Craft-repair      &2 \\
+		 Other-service     &3 \\
+		 Sales             &4 \\
+		 Exec-managerial   &5 \\
+		 Prof-specialty    &6 \\
+		 Handlers-cleaners &7 \\
+		 Machine-op-inspct &8 \\
+		 Adm-clerical      &9 \\
+		 Farming-fishing   &10 \\
+		 Transport-moving  &11 \\
+		 Priv-house-serv   &12 \\
+		 Protective-serv   &13 \\
+		 Armed-Forces      &14 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categorías de sexo  }
+    \label{tab:table3}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		  Femenino      &1 \\
+		  Masculino      &2 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{}
+    \label{tab:table4}
+    \begin{tabular}{|l|c|c|c|} 
+		\textbf{Estad\'igrafo} & \textbf{Ocupaci\'on} & \textbf{Educaci\'on} &\textbf{Sexo }\\
+    Media &  6& 4  &2   \\
+    Mediana & 6 &4  &2  \\
+    Varianza & 8.35 & 11.98 &  0.22\\
+    DS &2.89  & 3.46 & 0.47  \\
+	CV &  0.48& 0.86 &0.23 \\
+    Moda & 6  & 4 & 2 \\
+	Min &1 &1 &1 \\ 
+	Lower-Hinge &3 &2 &1 \\ 
+	Median &6 &4 &2 \\ 
+	Upper-Hinge &8 &5 &2 \\ 
+	Max & 14&16 &2 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_occupation.jpeg}
+    \caption{Boxplot para ocupación}
+    \label{fig:boxplot_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_occupation.jpeg}
+    \caption{Histograma de ocupación}
+    \label{fig:hist_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_education.jpeg}
+    \caption{Boxplot para educacion}
+    \label{fig:boxplot_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_education.jpeg}
+    \caption{Histograma de educacion}
+    \label{fig:hist_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_sex.jpeg}
+    \caption{Boxplot para sexo}
+    \label{fig:boxplot_sex}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_sex.jpeg}
+    \caption{Histograma de sexo}
+    \label{fig:hist_sex}
+\end{figure}
 
 \section*{Ejercicio 3}
 El problema trata sobre comparar la medias de años de educacion de los grupos de ingresos $\le50K$ y $>50K$, y ver si hay alguna diferencia significativa entre esas medias.\\
