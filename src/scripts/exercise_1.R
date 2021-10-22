@@ -20,46 +20,46 @@ small_sample_replace <- sample(population, 20, replace = TRUE)
 # saving normal population
 # -----------------------------------------------------
 # Use this to save the current population and samples
-#write.csv(population, file = "../data/ex_1/population.csv", row.names = F)
-#write.csv(large_sample, file = "../data/ex_1/large_sample.csv", row.names = F)
-#write.csv(large_sample_replace,
-    #file = "../data/ex_1/large_sample_replace.csv",
-    #row.names = F
-#)
-#write.csv(big_sample, file = "../data/ex_1/big_sample.csv", row.names = F)
-#write.csv(big_sample_replace,
-    #file = "../data/ex_1/big_sample_replace.csv",
-    #row.names = F
-#)
-#write.csv(medium_sample, file = "../data/ex_1/medium_sample.csv", row.names = F)
-#write.csv(medium_sample_replace,
-    #file = "../data/ex_1/medium_sample_replace.csv",
-    #row.names = F
-#)
-#write.csv(small_sample, file = "../data/ex_1/small_sample.csv", row.names = F)
-#write.csv(small_sample_replace,
-    #file = "../data/ex_1/small_sample_replace.csv",
-    #row.names = F
-#)
+write.csv(population, file = "data/ex_1/population.csv", row.names = F)
+write.csv(large_sample, file = "data/ex_1/large_sample.csv", row.names = F)
+write.csv(large_sample_replace,
+    file = "data/ex_1/large_sample_replace.csv",
+    row.names = F
+)
+write.csv(big_sample, file = "data/ex_1/big_sample.csv", row.names = F)
+write.csv(big_sample_replace,
+    file = "data/ex_1/big_sample_replace.csv",
+    row.names = F
+)
+write.csv(medium_sample, file = "data/ex_1/medium_sample.csv", row.names = F)
+write.csv(medium_sample_replace,
+    file = "data/ex_1/medium_sample_replace.csv",
+    row.names = F
+)
+write.csv(small_sample, file = "data/ex_1/small_sample.csv", row.names = F)
+write.csv(small_sample_replace,
+    file = "data/ex_1/small_sample_replace.csv",
+    row.names = F
+)
 
 # -----------------------------------------------------
 # loading normal population
 # -----------------------------------------------------
 # Use this to load a previous saved population
-#load_vector <- function(filex) {
-    #data_frame <- read.csv(filex)
-    #data_frame$x
-#}
+load_vector <- function(filex) {
+    data_frame <- read.csv(filex)
+    data_frame$x
+}
 
-#population <- load_vector("../data/ex_1/population.csv")
-#large_sample <- load_vector("../data/ex_1/large_sample.csv")
-#large_sample_replace <- load_vector("../data/ex_1/large_sample_replace.csv")
-#big_sample <- load_vector("../data/ex_1/big_sample.csv")
-#big_sample_replace <- load_vector("../data/ex_1/big_sample_replace.csv")
-#medium_sample <- load_vector("../data/ex_1/medium_sample.csv")
-#medium_sample_replace <- load_vector("../data/ex_1/medium_sample_replace.csv")
-#small_sample <- load_vector("../data/ex_1/small_sample.csv")
-#small_sample_replace <- load_vector("../data/ex_1/small_sample_replace.csv")
+population <- load_vector("data/ex_1/population.csv")
+large_sample <- load_vector("data/ex_1/large_sample.csv")
+large_sample_replace <- load_vector("data/ex_1/large_sample_replace.csv")
+big_sample <- load_vector("data/ex_1/big_sample.csv")
+big_sample_replace <- load_vector("data/ex_1/big_sample_replace.csv")
+medium_sample <- load_vector("data/ex_1/medium_sample.csv")
+medium_sample_replace <- load_vector("data/ex_1/medium_sample_replace.csv")
+small_sample <- load_vector("data/ex_1/small_sample.csv")
+small_sample_replace <- load_vector("data/ex_1/small_sample_replace.csv")
 
 # -----------------------------------------------------
 # calculating Dispersion and Central Tendency measures
@@ -265,6 +265,36 @@ names.arg = names,
 xlab = "Samples",
 ylab = "Variance"
 )
+
+# -----------------------------------------------------
+# bar plot quantiles
+# -----------------------------------------------------
+quantile_matrix <- matrix(
+    c(quantile(large_sample),
+    quantile(large_sample_replace),
+    quantile(big_sample),
+    quantile(big_sample_replace),
+    quantile(medium_sample),
+    quantile(medium_sample_replace),
+    quantile(small_sample),
+    quantile(small_sample_replace),
+    quantile(population)),
+    ncol = 9,
+    nrow = 5
+)
+barplot(quantile_matrix,
+        beside = T,
+        col = c("green",
+                "blue",
+                "lightyellow",
+                "lightgreen",
+                "cyan"
+                ),
+        legend.text = c("0%", "25%", "50%", "75%", "100%"),
+        xlab = "Samples(l, lr,b, br, m, mr, s, sr, p)",
+        ylab = "Quantiles"
+)
+
 # -----------------------------------------------------
 # define confidence intervals functions
 # -----------------------------------------------------
