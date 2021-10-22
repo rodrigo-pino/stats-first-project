@@ -97,9 +97,9 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
  
 \subsection*{Diferencias entre las muestras y la poblaci\'on}
 
-Se genera una poblacion inicial con 500 valores y una distribución normal con media 0 y varianza 1. Luego se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo.
+Se genera una poblaci\'on inicial con 500 valores y una distribución normal con media 0 y varianza 1. Luego se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo. Para cada muestra se calculan media, mediana, varaiaci\'on y desviaci\'on est\'andar. Los datos son cont\'inuos y la probabilidad de que 2 datos sean iguales es teoricamente 0, por tanto asumimos que la moda nunca existe.
 
-La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuacion era mayor o menor dependiendo del tama\~no de las muestras. \\
+La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuaci\'on es mayor o menor dependiendo del tama\~no de las muestras. \\
 Las muestras de mayor tamaño presentan estimadores más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real.
 Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos,
 mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información extra\'ida.
@@ -110,17 +110,24 @@ Queda reflejada entonces una dependencia directa que existe entre los resultados
 \textit{p: poblaci\'on, l: muestra de tama\~no 200, b: tama\~no 60, m: tama\~no 30 y s: tama\~no 20}.
 \textit{Si tiene r al final es muestra con remplazo}
 
-Para comparar los resultados utilizamos un gr\'afico de cajas y bisagras\footnote{No es posible aprecirlo bien en tama\~no tan reducido.}.
+Para comparar los resultados utilizamos un gr\'afico de cajas y bisagras\footnote{En el codigo adjunto se puede obtener una representaci\'on m\'as completa}.
 Los gr\'aficos de las muestras de tama\~no 200 se encuentran generalmente alineadas y bien formadas, indicador de que sus datos mantienen la distribución normal de la poblaci\'on de la cual fueron extra\'idos.
 La representaci\'on de cajas y bisagras de las otras muestras puede estar bien formada o no.
 En la imagen ejemplo es posible ver que las muestras peque\~na sus datos no son representativos de la poblaci\'on,
-al igual que la muestra de tamaño 60 sin remplazo, mientras que la muestra de tama\~no 60 con remplazo sus datos son representativos de la poblacion.
+al igual que la muestra de tamaño 60 sin remplazo, mientras que la muestra de tama\~no 60 con remplazo sus datos est\'an relativamente alineados con los de la poblaci\'on.
 
 \subsection*{Intervalos de Confianza y diferencias entre las muestras de igual tama\~no}
-Se estiman los intervalos de confianza para la media y la varianza con un nivle de signifacion del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tamaño.
+Se estiman los intervalos de confianza para la media y la varianza con un nivel de signifaci\'on del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tamaño.
 
-Durante todas las pruebas realizadas todos los intervalos de confianza fueron correctos, es decir, la media y la varianza de la poblac\'ion siempre estuvieron dentro de los intervalos calculados.
-No hubo una diferencia notable entre las muestras extraidas con remplazo y sin remplazo en sus intervalos de confianza.
+Durante todas las pruebas realizadas todos los intervalos de confianza fueron correctos, es decir, la media y la varianza de la poblaci\'on siempre estuvieron dentro de los intervalos calculados.
+La diferencia m\'as notable que ocurri\'o de manera consistente en todas las pruebas realizadas fue la diferencia de tama\~no en los intervalos entre las muestras con mayor cantidad de datos y menor cantidad respectivamente. Una muestra con menor cantidad de datos resulta en un intervalo de confianza m\'as amplio.
+
+Durante nuestras pruebas no hubo una diferencia notable en los intervalos de confianza entre las muestras extraidas con remplazo y sin remplazo.
+
+\subsection*{Conocimientos adquiridos}
+Podemos decir a modo de an\'alisis final que el proceso de obtener una muestra no basta solo con recoger datos aleatorios, es importante que los datos sean representativos de la poblaci\'on. En caso de que no se tenga informaci\'on sobre la poblacion obtener la mayor cantidad de datos posibles.
+
+Tambien es posible apreciar que en las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tamaño como compensaci\'on a la inexactitud de sus estimadores puntuales.
 
 \section*{Ejercicio 2} 
 
