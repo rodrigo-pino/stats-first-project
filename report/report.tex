@@ -20,9 +20,9 @@
 	
 	
 	
-	\textbf{Fase 1. Estad韘tica Descriptiva, Estimaci髇 y Prueba de Hip髏esis.}}
+	\textbf{Fase 1. Estad铆stica Descriptiva, Estimaci贸n y Prueba de Hip贸tesis.}}
 
-Estudiante P\'erez P\'erez \footnote{Soy estudiante de X a駉 de mi carrera.}\\}
+Estudiante P\'erez P\'erez \footnote{Soy estudiante de X a帽o de mi carrera.}\\}
 \date{}
 %\renewcommand{\baselinestretch}{1.4}
 \renewcommand{\labelenumi}{\alph{enumi}.}
@@ -43,21 +43,26 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X a駉 de mi carrera.}\\}
 
 \section*{Ejercicios}
 \begin{eje}
-    Genere una Poblaci髇 normal de tama駉 500, seleccione 8 muestras de tama駉s varios(Muy mayor que 30, mayor que 30, 30, 20), 4 muestras con remplazo y 4 sin remplazo.
+    Genere una Poblaci贸n normal de tama帽o 500, seleccione 8 muestras de tama帽os varios(Muy mayor que 30, mayor que 30, 30, 20), 4 muestras con remplazo y 4 sin remplazo.
     \begin{enumerate}
-        \item Calcule para cada una de las muestras los Estad韘ticos Descriptivos, de la Conferencia 1.
-        \item Calc鷏elos en la poblaci髇 inicial. Analice las diferencias.
+        \item Calcule para cada una de las muestras los Estad铆sticos Descriptivos, de la Conferencia 1.
+        \item Calc煤lelos en la poblaci贸n inicial. Analice las diferencias.
         \item Grafique los resultados.
         \item Para cada muestra calcule los intervalos de confianza para la media y la varianza.
-        \item Analice las diferencias en los resultados de las muestras de tama駉s similares.
+        \item Analice las diferencias en los resultados de las muestras de tama帽os similares.
     \end{enumerate}
 	Propuesta de distintos ejercicios de la clase, para desarrollar las habilidades a crear durante la clase.
 \end{eje}
 \begin{eje}
-    Aqui va orden del ejercicio 2.
+	De acuerdo a su set de datos(Equipo 10):
+	\begin{enumerate}
+			\item Utilice los Estad铆sticos Descriptivos estudiados en la Conferencia 1. Para describir el comportamiento de tres de sus variables. Seleccione las que sean m谩s importantes y explique porque seleccion贸 estas.
+			\item Grafique los resultados.
+			\item Interprete los resultados en t茅rminos del problema.
+	\end{enumerate}
 \end{eje}
 \begin{eje}
-    Analizando los datos del archivo "adult.data.csv"(Equipo 10), 縃ay diferencias significativas entre el promedio de a駉s dedicados a la educaci髇 y la cantidad de ingreso de los censados?
+    Analizando los datos del archivo "adult.data.csv"(Equipo 10), 驴Hay diferencias significativas entre el promedio de a帽os dedicados a la educaci贸n y la cantidad de ingreso de los censados?
 \end{eje}
 
 
@@ -74,14 +79,9 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X a駉 de mi carrera.}\\}
 		\begin{itemize}
 			\item Recursos para motivar la clase.
 			\item Recuento por los antecedentes de los resultados o investigadores.
-			\item Esta no tiene que venir acompa馻da por plecas, solo es un ejemplo.
+			\item Esta no tiene que venir acompa帽ada por plecas, solo es un ejemplo.
 		\end{itemize}	
 		
-
-		
-
-
-
 
 \section*{Ejercicio 1}
 \textit{(c\'odigo referente al ejercicio en exercise\_1.R)}
@@ -89,28 +89,28 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X a駉 de mi carrera.}\\}
  
 \subsection*{Diferencias entre las muestras y la poblaci\'on}
 
-Se genera una poblaci\'on inicial con 500 elementos y una distribuci髇 normal con media 0 y varianza 1. Luego se extraen 4 muestras sin remplazo, cada una de tama駉 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tama駉 a las anteriores y con remplazo. Para cada muestra se calculan media, mediana, varaiaci\'on y desviaci\'on est\'andar. Los datos son continuos y la probabilidad de que 2 datos sean iguales es teoricamente 0, por ende asumimos que la moda nunca existe.
+Se genera una poblaci\'on inicial con 500 elementos y una distribuci贸n normal con media 0 y varianza 1. Luego se extraen 4 muestras sin remplazo, cada una de tama帽o 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tama帽o a las anteriores y con remplazo. Para cada muestra se calculan media, mediana, varaiaci\'on y desviaci\'on est\'andar. Los datos son continuos y la probabilidad de que 2 datos sean iguales es teoricamente 0, por ende asumimos que la moda nunca existe.
 
 La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuaci\'on es mayor o menor dependiendo del tama\~no de las muestras.\\
-Las muestras de mayor tama駉 presentan estimadores m醩 exactos, en cambio, las de menor tama駉 suelen estar m醩 alejadas del valor real.
-Esto se debe a que en las muestras m醩 grandes cuando tienen un caso extremo no representativo de la poblaci髇 su impacto queda disminuido por el resto de los datos no extremos,
-mientras que en las muestras peque馻s la existencia de uno de estos altera considerablemente la informaci髇 extra\'ida.
+Las muestras de mayor tama帽o presentan estimadores m谩s exactos, en cambio, las de menor tama帽o suelen estar m谩s alejadas del valor real.
+Esto se debe a que en las muestras m谩s grandes cuando tienen un caso extremo no representativo de la poblaci贸n su impacto queda disminuido por el resto de los datos no extremos,
+mientras que en las muestras peque帽as la existencia de uno de estos altera considerablemente la informaci贸n extra\'ida.
 
 Queda reflejada entonces una dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, incluso m\'as cuando la muestra es peque\~na.\\
 
 Para visualizar los resultados utilizamos un gr\'afico de cajas y bisagras y gr\'aficos de barras. El primero por su propiedad para dar en una sola imagen percentiles, mediana, m\'inimo y m\'aximo, adem\'as si las partes de las cajas se encunetran simetricas y centrada en los datos indica que estos siguen una dsitribuci\'on normal. El gr\'afico de barras lo utilizamos para visualizar las diferencias de la media y la varianza en las distintas muestras y poblaci\'on.
 
-Como ejemplo, en la figura\footnote{Posible visualizar en mayor detalle cuando se ejecute el c\'odigo.} se puede apreciar un gr\'afico de cajas y bigotes distribuidos consecutivamente, donde cada gr\'afico corresponde a una muestra distinta. La caja de las muestras de tama\~no 200 se encuentran generalmente alineadas y bien formadas, indicador de que sus datos mantienen la distribuci髇 normal de la poblaci\'on de la cual fueron extra\'idos.
+Como ejemplo, en la figura\footnote{Posible visualizar en mayor detalle cuando se ejecute el c\'odigo.} se puede apreciar un gr\'afico de cajas y bigotes distribuidos consecutivamente, donde cada gr\'afico corresponde a una muestra distinta. La caja de las muestras de tama\~no 200 se encuentran generalmente alineadas y bien formadas, indicador de que sus datos mantienen la distribuci贸n normal de la poblaci\'on de la cual fueron extra\'idos.
 La representaci\'on de las otras muestras puede estar bien formadas o no.
 En este ejemplo es posible ver que las muestras peque\~nas la caja esta deformada por lo que sus datos no son representativos de la poblaci\'on,
-al igual que la muestra de tama駉 60 sin remplazo, mientras que la muestra de tama\~no 60 con remplazo sus datos est\'an relativamente alineados con los de la poblaci\'on.
+al igual que la muestra de tama帽o 60 sin remplazo, mientras que la muestra de tama\~no 60 con remplazo sus datos est\'an relativamente alineados con los de la poblaci\'on.
 
 \includegraphics{images/ex1_box_300.png}
 \textit{p: poblaci\'on, l: muestra de tama\~no 200, b: tama\~no 60, m: tama\~no 30 y s: tama\~no 20}.
 \textit{Si tiene r al final es muestra con remplazo}
 
 \subsection*{Intervalos de Confianza y diferencias entre las muestras de igual tama\~no}
-Se estiman los intervalos de confianza para la media y la varianza con un nivel de signifaci\'on del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tama駉.
+Se estiman los intervalos de confianza para la media y la varianza con un nivel de signifaci\'on del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tama帽o.
 
 Durante todas las pruebas realizadas todos los intervalos de confianza fueron correctos, es decir, la media y la varianza de la poblaci\'on siempre estuvieron dentro de los intervalos calculados.
 La diferencia m\'as notable que ocurri\'o de manera consistente en todas las pruebas realizadas fue la diferencia de tama\~no en los intervalos entre las muestras con mayor cantidad de datos y menor cantidad respectivamente. Una muestra con menor cantidad de datos resulta en un intervalo de confianza m\'as amplio.
@@ -120,16 +120,155 @@ Durante nuestras pruebas no hubo una diferencia notable en los intervalos de con
 \subsection*{Conocimientos adquiridos}
 Podemos decir a modo de an\'alisis final que el proceso de obtener una muestra no basta solo con recoger datos aleatorios, es importante que los datos sean representativos de la poblaci\'on. En caso de que no se tenga informaci\'on sobre la poblacion obtener la mayor cantidad de datos posibles.
 
-Tambien visaulizamos como las f\'ormulas estudiadas se adapantan y complementan para dar un resultado correcto. En el caso de las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tama駉 como compensaci\'on a la inexactitud de sus estimadores puntuales.
+Tambien visaulizamos como las f\'ormulas estudiadas se adapantan y complementan para dar un resultado correcto. En el caso de las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tama帽o como compensaci\'on a la inexactitud de sus estimadores puntuales.
 
 \section*{Ejercicio 2} 
 
+El dataset contaba con valores faltantes. Para lidiar con este problema se realiz\'o un preprocesamiento de los datos. Se ten\'ian dos opciones: descartar dichos valores faltantes o sustituirlos por la media de los conocidos. Se opt\'o por la \'ultima opci\'on. De esta forma se obtuvo un set de datos m\'as limpio y completo que facilit\'o el trabajo en el posterior an\'alis.
+
+Como parte del an\'alisis se tomaron tres variables que se consideraron las m\'as importantes. Primeramente tomamos 'education', pues consideramos que el nivel de educaci贸n influye en gran medida en el salario de una persona. No suelen ganar lo mismo una persona con nivel universitario queuno que solamente tiene un nivel medio-superior. La otra variable escogida para analizar fue 'occupation'. El salario de una persona est\'a determinado principalmente por su profesi\'on o el tipo de trabajo que realiza. Como tercera y \'ultima  variable a analizar se tom\'o 'sex'. Se decidi\'o tomar esta variable porque se sabe que hoy en la actualidad todav\'ia existen diferencias en cuanto al salario de dos personas que se realizan el mismo trabajo en dependencia del sexo, por lo que resulto de inter\'es trabajar con esta variable.
+
+Para garantizar la veracidad de los planteamientos  anteriores se hicieron pruebas de hip贸tesis para cada uno de estos atributos. El resultado coincidi\'o. Tanto la educaci贸n como la ocupaci\'on y el sexo influyen significativamente en los ingresos anuales de una persona. Sin embargo, se decidi\'o analizar el resto de variables y se pudo observar un hecho interesante: la gran mayor\'ia de los atributos del dataset influyen significativamente en los ingresos anuales de una persona. Por lo que podemos decir que se hizo una muy buena seleccion de variables a la hora de recopilar informaci贸n referente al problema.
+
+Con respecto a los resultados obtenidos a trav\'es del an\'alisis descriptivo de las tres variables escogidas, la tabla \ref{tab:table4} muestra los resultados para la educaci贸n, ocupaci\'on y el sexo.En las figuras de la 1 a la 6 se muestran algunos resultados gr\'aficos. En este caso, todas las variables escogidas eran categ\'oricas por lo que se codificaron en valores enteros. En las tablas \ref{tab:table1},\ref{tab:table2} y \ref{tab:table3}   se puede apreciar que valor representa cada n\'umero.
+
+\subsection*{ Interpretaci\'on de los resultados }
+
+En el caso de la ocupaci贸n la mediana fue 6( Exec-managerial ) , lo que implica que la mayor parte de de individuos (50\%) que forman parte de la muestra se dedican a esta ocupaci\'on. La moda fue tambi\'en 6, lo cual significa que es la ocupacion a la que mas se repite entre los individuos de la muestra. El valor del coeficiente de variaci\'on es de 48\% aproximadamente, por tanto los datos son muy heterog\'eneos. 
+
+En el caso de la educaci贸n la mediana fue 4 (HS-grad), lo que quere decir que alrededor del 50\% de los individuos tienen al menos nivel medio superior. La moda tambi\'en fue 4, lo cual implica que la mayor parte de las personas tenian al menos nivel medio superior en cuanto a educaci贸n. Por \'ultimo, el valor del coeficiente de variaci\'on es de 86\% aproximadamente por lo que los datos son muy heterog\'eneos. 
+
+Finalmente, para el sexo, se obtuvo  que la mediana y el la moda tomaron el mismo valor: 2. Eso implica que el valor intermedio de los datos sobreran de sexo masculino , y que  estos individuos  son los que tienen mayor presencia en el dataset.
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Valores num\'erico de las categor铆as de educaci贸n }
+    \label{tab:table1}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		Bachelors   &1 \\
+	    Some-college&2 \\
+		11th        &3 \\
+		HS-grad     &4 \\
+	    Prof-school &5 \\
+		Assoc-acdm  &6 \\
+		Assoc-voc   &7 \\
+		9th         &8 \\
+	    7th-8th     &9 \\
+		12th        &10 \\
+		Masters     &11 \\
+		1st-4th     &12 \\
+		10th        &13 \\
+		Doctorate   &14 \\
+		5th-6th     &15 \\
+		Preschool   &16 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categor铆as de ocupaci\'on }
+    \label{tab:table2}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		 Tech-support      &1 \\
+		 Craft-repair      &2 \\
+		 Other-service     &3 \\
+		 Sales             &4 \\
+		 Exec-managerial   &5 \\
+		 Prof-specialty    &6 \\
+		 Handlers-cleaners &7 \\
+		 Machine-op-inspct &8 \\
+		 Adm-clerical      &9 \\
+		 Farming-fishing   &10 \\
+		 Transport-moving  &11 \\
+		 Priv-house-serv   &12 \\
+		 Protective-serv   &13 \\
+		 Armed-Forces      &14 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categor铆as de sexo  }
+    \label{tab:table3}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		  Femenino      &1 \\
+		  Masculino      &2 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{}
+    \label{tab:table4}
+    \begin{tabular}{|l|c|c|c|} 
+		\textbf{Estad\'igrafo} & \textbf{Ocupaci\'on} & \textbf{Educaci\'on} &\textbf{Sexo }\\
+    Media &  6& 4  &2   \\
+    Mediana & 6 &4  &2  \\
+    Varianza & 8.35 & 11.98 &  0.22\\
+    DS &2.89  & 3.46 & 0.47  \\
+	CV &  0.48& 0.86 &0.23 \\
+    Moda & 6  & 4 & 2 \\
+	Min &1 &1 &1 \\ 
+	Lower-Hinge &3 &2 &1 \\ 
+	Median &6 &4 &2 \\ 
+	Upper-Hinge &8 &5 &2 \\ 
+	Max & 14&16 &2 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_occupation.jpeg}
+    \caption{Boxplot para ocupaci贸n}
+    \label{fig:boxplot_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_occupation.jpeg}
+    \caption{Histograma de ocupaci贸n}
+    \label{fig:hist_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_education.jpeg}
+    \caption{Boxplot para educacion}
+    \label{fig:boxplot_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_education.jpeg}
+    \caption{Histograma de educacion}
+    \label{fig:hist_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_sex.jpeg}
+    \caption{Boxplot para sexo}
+    \label{fig:boxplot_sex}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_sex.jpeg}
+    \caption{Histograma de sexo}
+    \label{fig:hist_sex}
+\end{figure}
+
 \section*{Ejercicio 3}
-El problema trata sobre comparar la medias de a駉s de educacion de los grupos de ingresos $\le50K$ y $>50K$, y ver si hay alguna diferencia significativa entre esas medias.\\
+El problema trata sobre comparar la medias de a帽os de educacion de los grupos de ingresos $\le50K$ y $>50K$, y ver si hay alguna diferencia significativa entre esas medias.\\
 \textit{El c\'odigo referente a este ejercicio esta en el archivo exercise\_3.R}\\
 Para lograr lo anterior se dividi\'o todos los datos del archivo csv en dos grupos: un grupo tiene ingresos $\le 50K$ y otro grupo tiene ingresos de $>50K$.\\
 Luego de realizar la divisi\'on se escogieron dos muestras sin reemplazo de tama\~no $N= 60$ cada una.\\
-Por lo que el problema se reduce a una prueba de hip髏esis para la comparaci髇 de las medias de dos poblaciones Normales.\\
+Por lo que el problema se reduce a una prueba de hip贸tesis para la comparaci贸n de las medias de dos poblaciones Normales.\\
 Las hip\'otesis para la prueba que se escogieron fueron:
 $$
 	H_0: \mu_1 = \mu_2
