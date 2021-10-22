@@ -3,10 +3,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{listings}
 \usepackage[width=17.00cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
 \newcommand{\argt}{\theta}
 
 
@@ -83,16 +84,43 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 		
 
 \section*{Ejercicio 1}
-(c\'odigo en doucmento adjunto)
+\textit{(c\'odigo referente al ejercicio en exercise\_1.R)}
  %(Zmin')
  
-Se genera una poblacion inicial con 500 valores y una distribución normal con media 0 y varianza 1. Luego de esta se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo.
+\subsection*{Diferencias entre las muestras y la poblaci\'on}
 
-La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuacion era mayor o menor dependiendo del tama\~no de las muestras. 
-Las muestras de mayor tamaño presentan sus estimadores son generalmente más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real. Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos, mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información extra\'ida. Esta razón refleja la dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, e incluso m\'as cuando la muestra es pequ\~na.
+Se genera una poblaci\'on inicial con 500 elementos y una distribución normal con media 0 y varianza 1. Luego se extraen 4 muestras sin remplazo, cada una de tamaño 200, 60, 30 y 20 respectivamente. Luego se extraen otras 4 de igual tamaño a las anteriores y con remplazo. Para cada muestra se calculan media, mediana, varaiaci\'on y desviaci\'on est\'andar. Los datos son continuos y la probabilidad de que 2 datos sean iguales es teoricamente 0, por ende asumimos que la moda nunca existe.
 
-La extracci\'on de muestras con remplazo en lo que se refiere a la media no tiene muchos cambios. 
+La exactitud de los estimadores puntuales fluctua en cada prueba realizada, la fluctuaci\'on es mayor o menor dependiendo del tama\~no de las muestras.\\
+Las muestras de mayor tamaño presentan estimadores más exactos, en cambio, las de menor tamaño suelen estar más alejadas del valor real.
+Esto se debe a que en las muestras más grandes cuando tienen un caso extremo no representativo de la población su impacto queda disminuido por el resto de los datos no extremos,
+mientras que en las muestras pequeñas la existencia de uno de estos altera considerablemente la información extra\'ida.
 
+Queda reflejada entonces una dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, incluso m\'as cuando la muestra es peque\~na.\\
+
+Para visualizar los resultados utilizamos un gr\'afico de cajas y bisagras y gr\'aficos de barras. El primero por su propiedad para dar en una sola imagen percentiles, mediana, m\'inimo y m\'aximo, adem\'as si las partes de las cajas se encunetran simetricas y centrada en los datos indica que estos siguen una dsitribuci\'on normal. El gr\'afico de barras lo utilizamos para visualizar las diferencias de la media y la varianza en las distintas muestras y poblaci\'on.
+
+Como ejemplo, en la figura\footnote{Posible visualizar en mayor detalle cuando se ejecute el c\'odigo.} se puede apreciar un gr\'afico de cajas y bigotes distribuidos consecutivamente, donde cada gr\'afico corresponde a una muestra distinta. La caja de las muestras de tama\~no 200 se encuentran generalmente alineadas y bien formadas, indicador de que sus datos mantienen la distribución normal de la poblaci\'on de la cual fueron extra\'idos.
+La representaci\'on de las otras muestras puede estar bien formadas o no.
+En este ejemplo es posible ver que las muestras peque\~nas la caja esta deformada por lo que sus datos no son representativos de la poblaci\'on,
+al igual que la muestra de tamaño 60 sin remplazo, mientras que la muestra de tama\~no 60 con remplazo sus datos est\'an relativamente alineados con los de la poblaci\'on.
+
+\includegraphics{images/ex1_box_300.png}
+\textit{p: poblaci\'on, l: muestra de tama\~no 200, b: tama\~no 60, m: tama\~no 30 y s: tama\~no 20}.
+\textit{Si tiene r al final es muestra con remplazo}
+
+\subsection*{Intervalos de Confianza y diferencias entre las muestras de igual tama\~no}
+Se estiman los intervalos de confianza para la media y la varianza con un nivel de signifaci\'on del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tamaño.
+
+Durante todas las pruebas realizadas todos los intervalos de confianza fueron correctos, es decir, la media y la varianza de la poblaci\'on siempre estuvieron dentro de los intervalos calculados.
+La diferencia m\'as notable que ocurri\'o de manera consistente en todas las pruebas realizadas fue la diferencia de tama\~no en los intervalos entre las muestras con mayor cantidad de datos y menor cantidad respectivamente. Una muestra con menor cantidad de datos resulta en un intervalo de confianza m\'as amplio.
+
+Durante nuestras pruebas no hubo una diferencia notable en los intervalos de confianza entre las muestras extraidas con remplazo y sin remplazo.
+
+\subsection*{Conocimientos adquiridos}
+Podemos decir a modo de an\'alisis final que el proceso de obtener una muestra no basta solo con recoger datos aleatorios, es importante que los datos sean representativos de la poblaci\'on. En caso de que no se tenga informaci\'on sobre la poblacion obtener la mayor cantidad de datos posibles.
+
+Tambien visaulizamos como las f\'ormulas estudiadas se adapantan y complementan para dar un resultado correcto. En el caso de las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tamaño como compensaci\'on a la inexactitud de sus estimadores puntuales.
 
 \section*{Ejercicio 2} 
 
