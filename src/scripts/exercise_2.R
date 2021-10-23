@@ -1,7 +1,7 @@
 # ------------------------------------
 # Loading dataset
 # ------------------------------------
-data <- read.csv(file = "../raw_data/adult.data.csv")
+data <- read.csv(file = "raw_data/adult.data.csv")
 df <- data.frame(data)
 head(df)
 
