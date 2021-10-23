@@ -1,1 +1,4 @@
- 
+# Stats First Project
+
+### Structure
+
