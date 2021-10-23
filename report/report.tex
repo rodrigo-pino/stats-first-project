@@ -93,7 +93,7 @@ mientras que en las muestras pequeñas la existencia de uno de estos altera consi
 
 Queda reflejada entonces una dependencia directa que existe entre los resultados de una muestra y la calidad de sus datos. Podemos deducir entonces la importancia de que las muestras esten compuestas por datos fiables, incluso m\'as cuando la muestra es peque\~na.\\
 
-Para visualizar los resultados utilizamos un gr\'afico de cajas y bisagras y gr\'aficos de barras. El primero por su propiedad para dar en una sola imagen percentiles, mediana, m\'inimo y m\'aximo, adem\'as si las partes de las cajas se encunetran simetricas y centrada en los datos indica que estos siguen una dsitribuci\'on normal. El gr\'afico de barras lo utilizamos para visualizar las diferencias de la media y la varianza en las distintas muestras y poblaci\'on.
+Para visualizar los resultados utilizamos un gr\'afico de cajas y bisagras y gr\'aficos de barras. El primero por su propiedad para dar en una sola imagen percentiles, mediana, m\'inimo y m\'aximo, adem\'as si las partes de las cajas se encunetran simetricas y centrada en los datos indica que estos siguen una dsitribuci\'on normal. El gr\'afico de barras lo utilizamos para visualizar las diferencias de la media, la varianza y los cuartiles en las distintas muestras y poblaci\'on.
 
 Como ejemplo, en la figura\footnote{Posible visualizar en mayor detalle cuando se ejecute el c\'odigo.} se puede apreciar un gr\'afico de cajas y bigotes distribuidos consecutivamente, donde cada gr\'afico corresponde a una muestra distinta. La caja de las muestras de tama\~no 200 se encuentran generalmente alineadas y bien formadas, indicador de que sus datos mantienen la distribución normal de la poblaci\'on de la cual fueron extra\'idos.
 La representaci\'on de las otras muestras puede estar bien formadas o no.
@@ -108,14 +108,10 @@ al igual que la muestra de tamaño 60 sin remplazo, mientras que la muestra de ta
 Se estiman los intervalos de confianza para la media y la varianza con un nivel de signifaci\'on del 5 por ciento. Luego se comparan los resultados entre las muestras de mismo tamaño.
 
 Durante todas las pruebas realizadas todos los intervalos de confianza fueron correctos, es decir, la media y la varianza de la poblaci\'on siempre estuvieron dentro de los intervalos calculados.
-La diferencia m\'as notable que ocurri\'o de manera consistente en todas las pruebas realizadas fue la diferencia de tama\~no en los intervalos entre las muestras con mayor cantidad de datos y menor cantidad respectivamente. Una muestra con menor cantidad de datos resulta en un intervalo de confianza m\'as amplio.
+La diferencia m\'as notable que ocurri\'o de manera consistente en todas las pruebas realizadas fue la diferencia de tama\~no en los intervalos entre las muestras con mayor cantidad de datos y menor cantidad respectivamente. Una muestra con menor cantidad de datos resulta en un intervalo de confianza m\'as amplio. Esto se debe a que sus estimadores puntuales tiene una mayor probabilidad de ser inexactos y se compensa aumentando el rango del intervalo para garantizar la fiabilidad necesaria.
 
 Durante nuestras pruebas no hubo una diferencia notable en los intervalos de confianza entre las muestras extraidas con remplazo y sin remplazo.
 
-\subsection*{Conocimientos adquiridos}
-Podemos decir a modo de an\'alisis final que el proceso de obtener una muestra no basta solo con recoger datos aleatorios, es importante que los datos sean representativos de la poblaci\'on. En caso de que no se tenga informaci\'on sobre la poblacion obtener la mayor cantidad de datos posibles.
-
-Tambien visaulizamos como las f\'ormulas estudiadas se adapantan y complementan para dar un resultado correcto. En el caso de las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tamaño como compensaci\'on a la inexactitud de sus estimadores puntuales.
 
 \section*{Ejercicio 2} 
 \textit{El c\'odigo referente a este ejercicio esta en el archivo exercise\_2.R}\\
