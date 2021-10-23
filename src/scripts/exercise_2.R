@@ -102,8 +102,12 @@ occupation_median <- median(numerical_occupation)
 occupation_var  <-  var(numerical_occupation)
 occupation_sd  <- sd(numerical_occupation)
 occupation_mode  <- mode(numerical_occupation)
+occupation_vc  <- occupation_sd / occupation_median
 
+#jpeg(file="hist_occupation.jpeg")
 boxplot(numerical_occupation,ylab = "Occupation",las = 2)
+hist(numerical_occupation, col="blue")
+#dev.off()
 print("Occupation stats:")
 print(names(occupation))
 print(box_data(numerical_occupation))
@@ -112,6 +116,7 @@ print(paste("Median: ", occupation_median))
 print(paste("Var: ", occupation_var))
 print(paste("SD: ", occupation_sd))
 print(paste("Mode: ", occupation_mode))
+print(paste("CV:", occupation_vc))
 
 # ------------------------------------
 # Education
@@ -123,8 +128,12 @@ education_median <- median(numerical_education)
 education_var  <-  var(numerical_education)
 education_sd  <- sd(numerical_education)
 education_mode  <- mode(numerical_education)
+education_vc  <- education_sd / education_median
 
+#jpeg(file="hist_education.jpeg")
 boxplot(numerical_education, ylab = "Education", las = 2)
+hist(numerical_education, col = "green")
+#dev.off()
 print("Education stats:")
 print(names(education))
 print(box_data(numerical_education))
@@ -133,25 +142,31 @@ print(paste("Median: ", education_median))
 print(paste("Var: ", education_var))
 print(paste("SD: ", education_sd))
 print(paste("Mode: ", education_mode))
+print(paste("CV:", education_vc))
 
-
+ 
 # ------------------------------------
-# Workclass
+# Sex
 # ------------------------------------
-workclass_mean <- round(mean(categorical_to_numerical( df$workclass, workclass)))
-numerical_workclass <- replace_missing_data(df$workclass, workclass, workclass_mean )
+sex_mean <- round(mean(categorical_to_numerical( df$sex, sex)))
+numerical_sex <- replace_missing_data(df$sex, sex, sex_mean )
 
-workclass_median <- median(numerical_workclass)
-workclass_var  <-  var(numerical_workclass)
-workclass_sd  <- sd(numerical_workclass)
-workclass_mode  <- mode(numerical_workclass)
+sex_median <- median(numerical_sex)
+sex_var  <-  var(numerical_sex)
+sex_sd  <- sd(numerical_sex)
+sex_mode  <- mode(numerical_sex)
+sex_vc  <- sex_sd / sex_median
 
-boxplot(numerical_workclass,ylab = "Workclass",las = 2)
-print("Workclass stats:")
-print(names(workclass))
-print(box_data(numerical_workclass))
-print(paste("Mean: ", workclass_mean))
-print(paste("Median: ", workclass_median))
-print(paste("Var: ", workclass_var))
-print(paste("SD: ", workclass_sd))
-print(paste("Mode: ", workclass_mode))
+#jpeg(file="hist_sex.jpeg")
+boxplot(numerical_sex,ylab = "Sex",las = 2)
+hist(numerical_sex, col="yellow")
+#dev.off()
+print("Sex stats:")
+print(names(sex))
+print(box_data(numerical_sex))
+print(paste("Mean: ", sex_mean))
+print(paste("Median: ", sex_median))
+print(paste("Var: ", sex_var))
+print(paste("SD: ", sex_sd))
+print(paste("Mode: ", sex_mode))
+print(paste("CV:", sex_vc))

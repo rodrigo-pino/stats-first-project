@@ -54,7 +54,12 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 	Propuesta de distintos ejercicios de la clase, para desarrollar las habilidades a crear durante la clase.
 \end{eje}
 \begin{eje}
-    Aqui va orden del ejercicio 2.
+	De acuerdo a su set de datos(Equipo 10):
+	\begin{enumerate}
+			\item Utilice los Estad\'isticos Descriptivos estudiados en la Conferencia 1. Para describir el comportamiento de tres de sus variables. Seleccione las que sean m\'as importantes y explique porque seleccion\'o estas.
+			\item Grafique los resultados.
+			\item Interprete los resultados en t\'erminos del problema.
+	\end{enumerate}
 \end{eje}
 \begin{eje}
     Analizando los datos del archivo "adult.data.csv"(Equipo 10), ¿Hay diferencias significativas entre el promedio de años dedicados a la educación y la cantidad de ingreso de los censados?
@@ -66,29 +71,11 @@ Estudiante P\'erez P\'erez \footnote{Soy estudiante de X año de mi carrera.}\\}
 	\item Aprender sobre el trabajo con los estad\'isticos descriptivos, estimaci\'on y prueba de hip\'otesis. 
 	\item Ganar experiencia en el trabajo con el lenguaje R. 
 \end{itemize}
-\section*{Introducci\'on} 
  
- (Xmin')
+\section*{Introducci\'on} 
 
-\textbf{(Como introducir mi clase?)}
-		\begin{itemize}
-			\item Recursos para motivar la clase.
-			\item Recuento por los antecedentes de los resultados o investigadores.
-			\item Esta no tiene que venir acompañada por plecas, solo es un ejemplo.
-		\end{itemize}	
+En este proyecto se ponen en pr\'actica el uso y comparaci\'on con estad\'isticos descriptivos  en poblaciones y muestras generadas con el lenguaje de programaci\'on R. Tambi\'en se trabaja con un conjunto de datos reales. En este caso, se trata de analizar el ingreso anual de un conjunto de individuos y caracterizar las variables que se consideran m\'as importantes para el problema. Para ello se hacen pruebas de hip\'otesis y se usan gr\'aficos de cajas e histogramas para mostrar los resultados, auxiliandose del lenguaje R.
 		
-
-		
-\section*{Teorizando un poco}	
-
-(Ymin')
-
-\begin{enumerate}
-	\item \textbf{(Un Teorema interesante)} Tras la introducci\'on se podr\'an construir las secciones que se estimen convenientes para el desarrollo de la clase.  
-	\item \textbf{(Un brillante algoritmo)} Los nombre de cada una de estas secciones quedan a la elecci\'on del autor.  
-
-\end{enumerate} 
-
 
 
 \section*{Ejercicio 1}
@@ -131,6 +118,147 @@ Podemos decir a modo de an\'alisis final que el proceso de obtener una muestra n
 Tambien visaulizamos como las f\'ormulas estudiadas se adapantan y complementan para dar un resultado correcto. En el caso de las muestras de mayor cantidad de datos sus estimadores puntuales usualmente son m\'as exactos que en las muestras peque\~nas y estas \'ultimas en consecuencia tienen un intervalo de confianza de mayor tamaño como compensaci\'on a la inexactitud de sus estimadores puntuales.
 
 \section*{Ejercicio 2} 
+\textit{El c\'odigo referente a este ejercicio esta en el archivo exercise\_2.R}\\
+
+El dataset contaba con valores faltantes. Para lidiar con este problema se realiz\'o un preprocesamiento de los datos. Se ten\'ian dos opciones: descartar dichos valores faltantes o sustituirlos por la media de los conocidos. Se opt\'o por la \'ultima opci\'on. De esta forma se obtuvo un conjunto de datos m\'as limpio y completo que facilit\'o el trabajo en el posterior an\'alis.
+
+Como parte del an\'alisis se tomaron tres variables que se consideraron las m\'as importantes. Primeramente tomamos 'education', pues consideramos que el nivel de educaci\'on influye en gran medida en el salario de una persona. No suelen ganar lo mismo una persona con nivel universitario que una que solamente tiene un nivel medio-superior. La otra variable escogida para analizar fue 'occupation'. El salario de una persona est\'a determinado principalmente por su profesi\'on o el tipo de trabajo que realiza. Como tercera y \'ultima  variable a analizar se tom\'o 'sex'. Se decidi\'o tomar esta variable porque se sabe que en la actualidad todav\'ia existen diferencias en cuanto al salario de dos personas que  realizan el mismo trabajo en dependencia del sexo, por lo que resulto de inter\'es trabajar con esta variable.
+
+Para garantizar la veracidad de los planteamientos  anteriores se hicieron pruebas de hip\'otesis para cada uno de estos atributos. El resultado coincidi\'o. Tanto la educaci\'on como la ocupaci\'on y el sexo influyen significativamente en los ingresos anuales de una persona. Sin embargo, se decidi\'o analizar el resto de variables y se pudo observar un hecho interesante: la gran mayor\'ia de los atributos del dataset influyen significativamente en los ingresos anuales de una persona. Por lo que podemos decir que se hizo una muy buena selecci\'on de variables a la hora de recopilar informaci\'on referente al problema.
+
+Con respecto a los resultados obtenidos a trav\'es del an\'alisis descriptivo de las tres variables escogidas, la tabla \ref{tab:table4} los muestra .En las figuras de la 1 a la 6 se muestran algunos resultados gr\'aficamente. En este caso, todas las variables escogidas eran categ\'oricas por lo que se codificaron en valores enteros. En las tablas \ref{tab:table1},\ref{tab:table2} y \ref{tab:table3}   se puede apreciar que valor representa cada n\'umero.
+
+\subsection*{ Interpretaci\'on de los resultados }
+
+En el caso de la ocupaci\'on la mediana fue 6( Exec-managerial ) , lo que implica que la mayor parte de  individuos (50\%) que forman parte de la muestra se dedican a esta ocupaci\'on. La moda fue tambi\'en 6, lo cual significa que es la ocupaci\'on a  que m\'as se repite entre los individuos de la muestra. El valor del coeficiente de variaci\'on es de 48\% aproximadamente, por tanto los datos son muy heterog\'eneos. 
+
+En el caso de la educaci\'on la mediana fue 4 (HS-grad), lo cual indica que alrededor del 50\% de los individuos tienen al menos nivel medio superior. La moda tambi\'en fue 4, lo cual implica que la mayor parte de las personas ten\'ian  nivel medio superior en cuanto a educaci\'on. Por \'ultimo, el valor del coeficiente de variaci\'on es de 86\% aproximadamente por lo que los datos son muy heterog\'eneos. 
+
+Finalmente, para el sexo, se obtuvo  que la mediana y el la moda tomaron el mismo valor: 2. Eso implica que los valores intermedios de los datos son de sexo masculino , y que  estos individuos  son los que tienen mayor presencia en el dataset.
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Valores num\'erico de las categor\'ias de educaci\'on }
+    \label{tab:table1}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		Bachelors   &1 \\
+	    Some-college&2 \\
+		11th        &3 \\
+		HS-grad     &4 \\
+	    Prof-school &5 \\
+		Assoc-acdm  &6 \\
+		Assoc-voc   &7 \\
+		9th         &8 \\
+	    7th-8th     &9 \\
+		12th        &10 \\
+		Masters     &11 \\
+		1st-4th     &12 \\
+		10th        &13 \\
+		Doctorate   &14 \\
+		5th-6th     &15 \\
+		Preschool   &16 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categor\'ias de ocupaci\'on }
+    \label{tab:table2}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		 Tech-support      &1 \\
+		 Craft-repair      &2 \\
+		 Other-service     &3 \\
+		 Sales             &4 \\
+		 Exec-managerial   &5 \\
+		 Prof-specialty    &6 \\
+		 Handlers-cleaners &7 \\
+		 Machine-op-inspct &8 \\
+		 Adm-clerical      &9 \\
+		 Farming-fishing   &10 \\
+		 Transport-moving  &11 \\
+		 Priv-house-serv   &12 \\
+		 Protective-serv   &13 \\
+		 Armed-Forces      &14 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+	  \caption{Valores num\'ericos de las categor\'ias de sexo  }
+    \label{tab:table3}
+    \begin{tabular}{|l|c|} 
+		\textbf{Categor\'ia} & \textbf{Valor} \\
+		  Femenino      &1 \\
+		  Masculino      &2 \\
+           \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{}
+    \label{tab:table4}
+    \begin{tabular}{|l|c|c|c|} 
+		\textbf{Estad\'igrafo} & \textbf{Ocupaci\'on} & \textbf{Educaci\'on} &\textbf{Sexo }\\
+    Media &  6& 4  &2   \\
+    Mediana & 6 &4  &2  \\
+    Varianza & 8.35 & 11.98 &  0.22\\
+    DS &2.89  & 3.46 & 0.47  \\
+	CV &  0.48& 0.86 &0.23 \\
+    Moda & 6  & 4 & 2 \\
+	Min &1 &1 &1 \\ 
+	Lower-Hinge &3 &2 &1 \\ 
+	Median &6 &4 &2 \\ 
+	Upper-Hinge &8 &5 &2 \\ 
+	Max & 14&16 &2 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_occupation.jpeg}
+    \caption{Boxplot para ocupaci\'on}
+    \label{fig:boxplot_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_occupation.jpeg}
+    \caption{Histograma de ocupaci\'on}
+    \label{fig:hist_occupation}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_education.jpeg}
+    \caption{Boxplot para educaci\'on}
+    \label{fig:boxplot_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_education.jpeg}
+    \caption{Histograma de educaci\'on}
+    \label{fig:hist_education}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/boxplot_sex.jpeg}
+    \caption{Boxplot para sexo}
+    \label{fig:boxplot_sex}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{images/hist_sex.jpeg}
+    \caption{Histograma de sexo}
+    \label{fig:hist_sex}
+\end{figure}
+
 
 \section*{Ejercicio 3}
 El problema trata sobre comparar la medias de años de educacion de los grupos de ingresos $\le50K$ y $>50K$, y ver si hay alguna diferencia significativa entre esas medias.\\
